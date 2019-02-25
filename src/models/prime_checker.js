@@ -1,3 +1,8 @@
+const PrimeChecker = function () {
+
+};
+
+
 PrimeChecker.prototype.numberIsPrime = function (number) {
   if (number <= 1) {
     return false;
