@@ -1,7 +1,16 @@
+const PubSub = require("../helpers/pub_sub.js");
+
 const PrimeChecker = function () {
 
 };
 
+PrimeChecker.prototype.bindEvents = function () {
+  PubSub.subscribe("FormView:number-input", (event) => {
+    const checkedNumber = this.numberIsPrime(event.detail);
+    console.log(checkedNumber);
+    PubSub.publish("PrimeChecker:numberChecked", checkedNumber);
+  })
+};
 
 PrimeChecker.prototype.numberIsPrime = function (number) {
   if (number <= 1) {
@@ -14,3 +23,5 @@ PrimeChecker.prototype.numberIsPrime = function (number) {
   }
   return true;
 };
+
+module.exports = PrimeChecker;
