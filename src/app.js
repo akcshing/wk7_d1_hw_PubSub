@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const primeChecker = new PrimeChecker();
   primeChecker.bindEvents();
-  
+
+  const resultView = new ResultView();
+  resultView.bindEvents();
 
 });

@@ -7,8 +7,13 @@ const PrimeChecker = function () {
 PrimeChecker.prototype.bindEvents = function () {
   PubSub.subscribe("FormView:number-input", (event) => {
     const checkedNumber = this.numberIsPrime(event.detail);
-    console.log(checkedNumber);
-    PubSub.publish("PrimeChecker:numberChecked", checkedNumber);
+    let result = undefined;
+      if (checkedNumber === true){
+        result = `Yes! It's a prime number.`
+      } else {
+        result = `No! It's not a prime number.`
+      }
+    PubSub.publish("PrimeChecker:numberChecked", result);
   })
 };
 
